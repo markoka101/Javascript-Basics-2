@@ -34,7 +34,7 @@ const cart = [
 ]
 
 //CODE HERE
-const summedPrice = cart.reduce((acc, curr) => acc['price'] + curr['price']);
+const summedPrice = cart.map(elem => elem['price']).reduce((acc, curr) => acc + curr);
 console.log(summedPrice);
 
 //////////////////PROBLEM 2////////////////////
@@ -53,8 +53,8 @@ console.log(summedPrice);
 */
 
 //CODE HERE
-const calcFinalPrice = (cartTotal, couponValue, tax) => (cartTotal * (tax + 1)) - couponValue;
-console.log(calcFinalPrice(80, 5, .07));
+const calcFinalPrice = (cartTotal, couponValue, tax) =>(cartTotal * (tax + 1)).toFixed(2) - couponValue;
+console.log(calcFinalPrice(87, 5, .07));
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -78,11 +78,13 @@ console.log(calcFinalPrice(80, 5, .07));
 
 /*
     TEXT ANSWER HERE
-    name(string) - Makes it easy to find customer after completing order
-    time(number) - Want to know what time the order is placed.
+    name(string) - Makes it easy to find customer after completing order if take out. Everyone I know doesnt have numbers as their name so a string seemed to be the right choice
+    address(string) -If it is for delivery would want to know address to deliver to. Must be a string since addresses arent made of just numbers.
+    delivery(bool) -This will tell the restaurant whether the cutomer is picking up or delivering. I use bool since delivery can only ever be true or false
+    time(string) - Want to know what time the order is placed. it is a string so can easily display time like 5:00 pm
     order(array of strings) - The restaurant need to know what the customer ordered
                             It is an array so that you can show all the different thigns that were ordered
-    price(number) - Want to know how much the order costs when it comes time to pay
+    price(number) - Want to know how much the order costs when it comes time to pay. I chose number because the price is just a numerical value.
 */
 
 /*
@@ -92,5 +94,10 @@ console.log(calcFinalPrice(80, 5, .07));
 
 //CODE HERE
 const costumer = {
-
-}
+    name : 'customer',
+    address : '123 main st, city, state, 12345',
+    delivery : true,
+    time : '7:00 pm', 
+    order: ['burger', 'fries'],
+    price: 6.99,
+};
